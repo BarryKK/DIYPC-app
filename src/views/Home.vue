@@ -1,5 +1,7 @@
 <template>
+ <el-container>
   <the-header></the-header>
+ </el-container>
 </template>
 
 <script>

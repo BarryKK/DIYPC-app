@@ -15,9 +15,20 @@
   </nav>
 </template>
 
+<script>
+export default {
+   data(){
+    return {
+     
+    }
+  }
+}
+</script>
+
+
 <style lang="scss" scoped>
 nav {
-  width: 90%;
+  width: 87%;
   height: 4rem;
   display: flex;
   justify-content: space-between;
