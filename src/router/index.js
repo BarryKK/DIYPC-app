@@ -1,15 +1,30 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home";
+import Home from "../views/Home.vue";
 import About from "../views/About.vue";
+import UserAuth from "../views/auth/UserAuth.vue";
+import CpuList from "../views/cpu/CpuList";
+import GraphicCardList from "../views/graphiccard/GraCardList";
 
 const routes = [
   {
     path: "/",
-    redirects: "/home",
+    redirect: "/home",
   },
   {
     path: "/home",
     component: Home,
+  },
+  {
+    path: "/auth",
+    component: UserAuth,
+  },
+  {
+    path: "/cpu",
+    component: CpuList,
+  },
+  {
+    path: "/graphiccard",
+    component: GraphicCardList,
   },
   {
     path: "/about",
