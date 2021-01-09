@@ -1,21 +1,34 @@
 <template>
-  <img src="../../assets/img/cpu/components-cpu.jpg" style="width:100%" >
+  <img src="../../assets/img/cpu/components-cpu.jpg" style="width: 100%" />
   <common-filter></common-filter>
   <base-card>
     <ul>
-      <cpu-items></cpu-items>
+      <cpu-item
+        v-for="cpu in cpus"
+        :img="cpu.img"
+        :key="cpu.id"
+        :id="cpu.id"
+        :ProcessorNumber="cpu.ProcessorNumber"
+        :Cores="cpu.Cores"
+        :Threads="cpu.Threads"
+        :BaseFrequency="cpu.BaseFrequency"
+      ></cpu-item>
     </ul>
   </base-card>
-  
 </template>
 
 <script>
-import CpuItems from "../../components/component/CpuItems.vue";
+import CpuItem from "../../components/component/CpuItem.vue";
 
 export default {
   components: {
-    CpuItems,
+    CpuItem,
   },
+  computed: {
+    cpus(){
+      return this.$store.getters['cpus/cpus']
+    }
+  }
 };
 </script>
 

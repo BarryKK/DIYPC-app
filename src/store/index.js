@@ -1,8 +1,11 @@
 import { createStore } from "vuex";
 
-export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
+import cpusModule from "./modules/cpus/index.js";
+
+const store = createStore({
+  modules: {
+    cpus: cpusModule,
+  },
 });
+
+export default store;

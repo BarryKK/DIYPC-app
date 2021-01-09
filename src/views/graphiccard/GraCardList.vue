@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import GraItems from '../../components/component/GraItems'
+import GraItems from '../../components/component/GraItem'
 
 export default {
     components: {
@@ -17,6 +17,10 @@ export default {
     }
 }
 </script>
-<style lang="">
-    
+<style lang="scss" scoped>
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 </style>
