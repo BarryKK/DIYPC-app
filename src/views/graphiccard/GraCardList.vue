@@ -1,21 +1,21 @@
 <template lang="">
     <img src="../../assets/img/graphiccard/components-graphiccard.jpg" style="width:100%;">
-    <common-filter></common-filter>
+    
     <base-card>
       <ul>
-        <gra-items></gra-items>
+        <gra-item></gra-item>
       </ul>
     </base-card>
 </template>
 
 <script>
-import GraItems from '../../components/component/GraItem'
+import GraItem from "../../components/graphiccards/GraItem.vue";
 
 export default {
-    components: {
-       GraItems
-    }
-}
+  components: {
+    GraItem,
+  },
+};
 </script>
 <style lang="scss" scoped>
 ul {

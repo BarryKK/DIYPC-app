@@ -1,6 +1,6 @@
 <template>
   <img src="../../assets/img/cpu/components-cpu.jpg" style="width: 100%" />
-  <common-filter></common-filter>
+  <cpu-filter></cpu-filter>
   <base-card>
     <ul>
       <cpu-item
@@ -18,17 +18,23 @@
 </template>
 
 <script>
-import CpuItem from "../../components/component/CpuItem.vue";
+import CpuItem from "../../components/cpus/CpuItem.vue";
+import CpuFilter from "../../components/cpus/CpuFilter.vue";
 
 export default {
   components: {
     CpuItem,
+    CpuFilter,
+  },
+  data() {
+    return {};
   },
   computed: {
-    cpus(){
-      return this.$store.getters['cpus/cpus']
-    }
-  }
+    cpus() {
+      return this.$store.getters["cpus/cpus"];
+    },
+  },
+  methods: {},
 };
 </script>
 

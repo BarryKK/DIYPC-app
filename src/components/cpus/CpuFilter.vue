@@ -1,6 +1,6 @@
 <template lang="">
   <div class="container">
-    <input type="text" placeholder="请输入型号" />
+    <input type="search" @input="search" :value="searchTerm" placeholder="请输入型号" />
   </div>
 </template>
 

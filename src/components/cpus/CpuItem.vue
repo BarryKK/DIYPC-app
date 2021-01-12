@@ -1,5 +1,5 @@
 <template lang="">
-  <li>
+  <li class="infinite-list-item">
     <img :src="img" style="width:100px;height:100px">
     <div class="essentials">
       <table border="0" cellpadding="4px" cellspacing="0">
@@ -27,24 +27,19 @@
 
 <script>
 export default {
-  props: ['img','id','ProcessorNumber', 'Cores', 'Threads', 'BaseFrequency']
-
+  props: ["img", "id", "ProcessorNumber", "Cores", "Threads", "BaseFrequency"],
 };
 </script>
 
 <style lang="scss" scoped>
 li {
   width: 100%;
-  border: 1px solid black;
+  height: 140px;
   border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 0.5rem;
   display: flex;
-  justify-content: space-between;
-  margin-bottom:1rem;
-
-  .essentials {
-    height: 100px;
-  }
- 
+  justify-content: space-around;
+  margin-bottom: 1rem;
 }
 </style> 

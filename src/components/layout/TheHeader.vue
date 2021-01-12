@@ -1,5 +1,7 @@
 <template>
   <div class="nav-container">
+    <input type="checkbox" id="check" />
+
     <nav class="nav">
       <!-- 添加一个链接 -->
       <div>
@@ -20,33 +22,37 @@
     </nav>
 
     <div id="mySideBar" class="sidebar">
-      <img src="../../assets/img/sidebar-background.jpg" class="header"/>
-      <a class="close"><i class="el-icon-close" @click="closeSideBar()"></i></a>
-      <router-link to="/cpu">CPU</router-link>
-      <router-link to="/graphiccard">显卡</router-link>
-      <a href="#">主板</a>
-      <a href="#">机箱</a>
-      <a href="#">电源</a>
-      <a href="#">散热</a>
-      <a href="#">内存</a>
-      <a href="#">存储</a>
-      <a href="#">评测</a>
+      <div class="sideBar_links">
+        <img src="../../assets/img/sidebar-background.jpg" class="header" />
+        <a class="close"
+          ><i class="el-icon-close" @click="closeSideBar()"></i
+        ></a>
+        <router-link to="/cpu">CPU</router-link>
+        <router-link to="/graphiccard">显卡</router-link>
+        <a href="#">主板</a>
+        <a href="#">机箱</a>
+        <a href="#">电源</a>
+        <a href="#">散热</a>
+        <a href="#">内存</a>
+        <a href="#">存储</a>
+        <a href="#">评测</a>
+      </div>
+      <div class="sideBar_OverLay"></div>
     </div>
   </div>
 </template>
+
 
 <script>
 export default {
   data() {
     return {
-      drawer: false,
-      direction: "ltr",
       isLoggedIn: false,
     };
   },
   methods: {
     openSideBar() {
-     document.getElementById("mySideBar").style.width = "16rem";
+      document.getElementById("mySideBar").style.width = "16rem";
     },
     closeSideBar() {
       document.getElementById("mySideBar").style.width = "0";
@@ -69,6 +75,10 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  span:hover {
+    background: #37c2f0;
+  }
 
   //添加字体
   h1 {
@@ -105,7 +115,7 @@ nav {
       a.router-link-active {
         cursor: pointer;
         border: none;
-        background: gray;
+        background: #37c2f0;
         transition: all 0.5s;
       }
     }
@@ -113,51 +123,48 @@ nav {
 }
 
 .sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    background-color: black;
-    overflow-x: hidden;
-    transition: all 0.5s;
-  
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  background-color: black;
+  overflow-x: hidden;
+  transform: translateX(-16rem);
+  transition: transform 0.3s;
 
-    .header{
-     width:100%;
-     height:5rem;
-     color: white;
-     text-align: center;
-     line-height:5rem;
-     font-size: 2rem;
-     background:url('../../assets/img/sidebar-background.jpg') no-repeat center / cover
-     
-   }
+  .header {
+    width: 100%;
+    height: 5rem;
+    color: white;
+    text-align: center;
+    line-height: 5rem;
+    font-size: 2rem;
+    background: url("../../assets/img/sidebar-background.jpg") no-repeat center /
+      cover;
+  }
 
-  .close{
-     text-align:right;
+  .close {
+    text-align: right;
 
-    &:hover{
-    background-color: black;
-    cursor: pointer;
-   }
-
-   
+    &:hover {
+      background-color: black;
+      cursor: pointer;
+    }
   }
 
   a {
-    color:white;
-    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    color: white;
+    padding: 0.5rem 0.5rem 0.5rem 6rem;
     text-decoration: none;
     font-size: 1.5rem;
     display: block;
     transition: all 0.3s;
     border: none;
-    
+    box-sizing: border-box;
 
-    &:hover{
-      background-color:gray
+    &:hover {
+      background-color: #37c2f0;
     }
   }
 }
