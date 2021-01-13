@@ -1,11 +1,8 @@
 <template>
   <div class="nav-container">
-    <input type="checkbox" id="check" />
-
     <nav class="nav">
-      <!-- 添加一个链接 -->
       <div>
-        <span @click="openSideBar()">
+        <span id="btnSideBar" class="header_Button" @click="openSideBar()">
           <img
             src="../../assets/icons/icons8-menu-144.png"
             style="width: 40px; height: 40px"
@@ -13,7 +10,6 @@
         </span>
         <h1><router-link to="/home">DIY 装机</router-link></h1>
       </div>
-
       <ul>
         <li><router-link to="/auth">登入</router-link></li>
         <li v-if="isLoggedIn"><a>登出</a></li>
@@ -21,11 +17,11 @@
       </ul>
     </nav>
 
-    <div id="mySideBar" class="sidebar">
-      <div class="sideBar_links">
+    <div id="mySideBar" class="sideBar">
+      <div class="sideBar_Links">
         <img src="../../assets/img/sidebar-background.jpg" class="header" />
-        <a class="close"
-          ><i class="el-icon-close" @click="closeSideBar()"></i
+        <a class="close" @click="closeSideBar()"
+          ><i class="el-icon-close"></i
         ></a>
         <router-link to="/cpu">CPU</router-link>
         <router-link to="/graphiccard">显卡</router-link>
@@ -37,11 +33,9 @@
         <a href="#">存储</a>
         <a href="#">评测</a>
       </div>
-      <div class="sideBar_OverLay"></div>
     </div>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -52,12 +46,13 @@ export default {
   },
   methods: {
     openSideBar() {
-      document.getElementById("mySideBar").style.width = "16rem";
+      document.querySelector(".sideBar_Links").classList.add("sideBar--Open");
     },
     closeSideBar() {
-      document.getElementById("mySideBar").style.width = "0";
+      document.querySelector(".sideBar_Links").classList.remove("sideBar--Open");
     },
   },
+  prodive: {closeSideBar:this.closeSideBar}
 };
 </script>
 
@@ -122,12 +117,12 @@ nav {
   }
 }
 
-.sidebar {
+.sideBar_Links {
   height: 100%;
-  width: 0;
+  width: 16rem;
+  left: 0;
   position: fixed;
   z-index: 10;
-  left: 0;
   background-color: black;
   overflow-x: hidden;
   transform: translateX(-16rem);
@@ -168,4 +163,9 @@ nav {
     }
   }
 }
+
+.sideBar .sideBar--Open {
+  transform: translateX(0);
+}
+
 </style>

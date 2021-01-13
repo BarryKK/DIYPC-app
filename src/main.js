@@ -5,11 +5,12 @@ import "element-plus/lib/theme-chalk/index.css";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-//import installElementPlus from './plugins/element.js'
 
 import BaseCard from "./components/ui/BaseCard.vue";
 
 const app = createApp(App);
+
+app.config.productionTip = false;
 
 app.use(store);
 app.use(router);

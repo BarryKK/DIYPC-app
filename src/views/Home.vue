@@ -8,6 +8,7 @@
       <a class="btn">开始</a>
     </div>
   </div>
+  <div class="mask" v-if="showModal" ></div>
 </template>
 
 <script>
@@ -23,10 +24,15 @@ function init() {
 
 
 export default {
+  data(){
+    return {
+      showModal:false
+    }
+  },
   mounted(){
      init();
-  }
-
+  },
+  inject:['closeSideBar']
 };
 </script>
 
@@ -34,6 +40,17 @@ export default {
 body {
   margin: 0;
   padding: 0;
+}
+
+.mask {
+  background-color:#000;
+  opacity: 0.3;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height: 100%;
+  z-index: 5
 }
 
 .showcase {
