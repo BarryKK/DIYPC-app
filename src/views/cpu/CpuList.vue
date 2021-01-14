@@ -1,10 +1,13 @@
 <template>
   <img src="../../assets/img/cpu/components-cpu.jpg" style="width: 100%" />
-  <cpu-filter></cpu-filter>
+  <cpu-filter
+    @search="updateSearch"
+    :search-term="enteredSearchTerm"
+  ></cpu-filter>
   <base-card>
     <ul>
       <cpu-item
-        v-for="cpu in cpus"
+        v-for="cpu in availableCpus"
         :img="cpu.img"
         :key="cpu.id"
         :id="cpu.id"
@@ -12,6 +15,7 @@
         :Cores="cpu.Cores"
         :Threads="cpu.Threads"
         :BaseFrequency="cpu.BaseFrequency"
+        :title="cpu.title"
       ></cpu-item>
     </ul>
   </base-card>
@@ -27,14 +31,40 @@ export default {
     CpuFilter,
   },
   data() {
-    return {};
+    return {
+      enteredSearchTerm: "",
+      activeSearchTerm: "",
+    };
   },
   computed: {
-    cpus() {
+    availableCpus(){
+      let cpus = [];
+      if(this.activeSearchTerm){
+         cpus = this.cpus.filter((cpu)=> cpu.ProcessorNumber.includes(this.activeSearchTerm) )
+      }else if (this.cpus){
+         cpus = this.cpus;
+      }
+      return cpus;
+    },
+    cpus(){
       return this.$store.getters["cpus/cpus"];
     },
+    
   },
-  methods: {},
+  methods: {
+    updateSearch(val) {
+      this.enteredSearchTerm = val;
+    },
+  },
+  watch: {
+    enteredSearchTerm(val){
+      setTimeout(()=>{
+        if(val === this.enteredSearchTerm){
+          this.activeSearchTerm =val
+        }
+      },300)
+    }
+  }
 };
 </script>
 

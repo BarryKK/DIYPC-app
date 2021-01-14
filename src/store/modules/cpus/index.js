@@ -27,7 +27,7 @@ export default {
         {
           id: "c3",
           img: "",
-          ProcessorNumber: "i5-10600KF",
+          ProcessorNumber: "i5-10700KF",
           Cores: 6,
           Threads: 12,
           BaseFrequency: "2.90 GHZ",
@@ -35,7 +35,7 @@ export default {
         {
           id: "c4",
           img: "",
-          ProcessorNumber: "i5-10600KF",
+          ProcessorNumber: "i5-10800KF",
           Cores: 6,
           Threads: 12,
           BaseFrequency: "2.90 GHZ",

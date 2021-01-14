@@ -32,7 +32,7 @@ export default {
   mounted(){
      init();
   },
-  inject:['closeSideBar']
+ 
 };
 </script>
 

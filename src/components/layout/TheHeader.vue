@@ -52,7 +52,6 @@ export default {
       document.querySelector(".sideBar_Links").classList.remove("sideBar--Open");
     },
   },
-  prodive: {closeSideBar:this.closeSideBar}
 };
 </script>
 
