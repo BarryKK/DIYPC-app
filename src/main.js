@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import ElementPlus from "element-plus";
+import { ElButton, ElInput, ElBacktop, ElInfiniteScroll } from "element-plus";
 import "element-plus/lib/theme-chalk/index.css";
 
 import App from "./App.vue";
@@ -14,7 +14,12 @@ app.config.productionTip = false;
 
 app.use(store);
 app.use(router);
-app.use(ElementPlus);
+app.use(ElInfiniteScroll);
+
+app.component(ElButton.name, ElButton);
+app.component(ElInput.name, ElInput);
+app.component(ElBacktop.name, ElBacktop);
+app.component(ElInfiniteScroll.name, ElInfiniteScroll);
 
 app.component("base-card", BaseCard);
 

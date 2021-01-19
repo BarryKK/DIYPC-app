@@ -15,7 +15,6 @@
         :Cores="cpu.Cores"
         :Threads="cpu.Threads"
         :BaseFrequency="cpu.BaseFrequency"
-        :title="cpu.title"
       ></cpu-item>
     </ul>
   </base-card>
@@ -36,20 +35,22 @@ export default {
       activeSearchTerm: "",
     };
   },
+
   computed: {
-    availableCpus(){
+    availableCpus() {
       let cpus = [];
-      if(this.activeSearchTerm){
-         cpus = this.cpus.filter((cpu)=> cpu.ProcessorNumber.includes(this.activeSearchTerm) )
-      }else if (this.cpus){
-         cpus = this.cpus;
+      if (this.activeSearchTerm) {
+        cpus = this.cpus.filter((cpu) =>
+          cpu.ProcessorNumber.includes(this.activeSearchTerm)
+        );
+      } else if (this.cpus) {
+        cpus = this.cpus;
       }
       return cpus;
     },
-    cpus(){
+    cpus() {
       return this.$store.getters["cpus/cpus"];
     },
-    
   },
   methods: {
     updateSearch(val) {
@@ -57,14 +58,14 @@ export default {
     },
   },
   watch: {
-    enteredSearchTerm(val){
-      setTimeout(()=>{
-        if(val === this.enteredSearchTerm){
-          this.activeSearchTerm =val
+    enteredSearchTerm(val) {
+      setTimeout(() => {
+        if (val === this.enteredSearchTerm) {
+          this.activeSearchTerm = val;
         }
-      },300)
-    }
-  }
+      }, 300);
+    },
+  },
 };
 </script>
 

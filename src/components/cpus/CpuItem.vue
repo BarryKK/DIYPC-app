@@ -1,5 +1,5 @@
 <template lang="">
-  <li class="infinite-list-item">
+  <li >
     <img :src="img" style="width:100px;height:100px">
     <div class="essentials">
       <table border="0" cellpadding="4px" cellspacing="0">
@@ -33,8 +33,8 @@ export default {
 
 <style lang="scss" scoped>
 li {
-  width: 100%;
-  height: 140px;
+  width: 90%;
+  height: 130px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 0.5rem;

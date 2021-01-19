@@ -19,7 +19,6 @@
 
     <div id="mySideBar" class="sideBar">
       <div class="sideBar_Links">
-        <img src="../../assets/img/sidebar-background.jpg" class="header" />
         <a class="close" @click="closeSideBar()"
           ><i class="el-icon-close"></i
         ></a>
@@ -126,17 +125,6 @@ nav {
   overflow-x: hidden;
   transform: translateX(-16rem);
   transition: transform 0.3s;
-
-  .header {
-    width: 100%;
-    height: 5rem;
-    color: white;
-    text-align: center;
-    line-height: 5rem;
-    font-size: 2rem;
-    background: url("../../assets/img/sidebar-background.jpg") no-repeat center /
-      cover;
-  }
 
   .close {
     text-align: right;
