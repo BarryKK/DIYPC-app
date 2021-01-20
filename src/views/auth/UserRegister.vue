@@ -15,12 +15,12 @@
         </div>
         <div class="form-control">
           <label for="password">密码</label>
-          <input type="text" id="password" placeholder="请输入密码" />
+          <input type="password" id="password" placeholder="请输入密码" />
           <small>Error message</small>
         </div>
         <div class="form-control">
           <label for="password2">确认密码</label>
-          <input type="text" id="password2" placeholder="请再次输入密码" />
+          <input type="password" id="password2" placeholder="请再次输入密码" />
           <small>Error message</small>
         </div>
         <button type="submit">Submit</button>
