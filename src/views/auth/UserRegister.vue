@@ -1,99 +1,145 @@
 <template lang="">
   <base-card>
     <div class="container">
-      <form id="form" class="form">
+      <form @submit.prevent="submitForm" id="form" class="form">
         <h2>注册</h2>
         <div class="form-control">
           <label for="username">用户名</label>
-          <input type="text" id="username" placeholder="请输入用户名" />
-          <small>Error message</small>
+          <input type="text" id="username" placeholder="请输入用户名" v-model.trim="email"/>
+          <small>{{errorMessage}}</small>
         </div>
         <div class="form-control">
           <label for="email">Email</label>
           <input type="text" id="email" placeholder="请输入E-Mail" />
-          <small>Error message</small>
+          <small>{{errorMessage}}</small>
         </div>
         <div class="form-control">
           <label for="password">密码</label>
-          <input type="text" id="password" placeholder="请输入密码" />
-          <small>Error message</small>
+          <input type="password" id="password" placeholder="请输入密码" />
+          <small>{{errorMessage}}</small>
         </div>
         <div class="form-control">
           <label for="password2">确认密码</label>
-          <input type="text" id="password2" placeholder="请再次输入密码" />
-          <small>Error message</small>
+          <input type="password" id="password2" placeholder="请再次输入密码" />
+          <small>{{errorMessage}}</small>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit">提交</button>
       </form>
     </div>
   </base-card>
 </template>
 <script>
 export default {
+  data() {
+    return {
+      username: "",
+      email: "",
+      password: "",
+      password2: "",
+      errorMessage: "",
+      formIsValid: true,
+    };
+  },
   methods: {
     showError(input, message) {
       const formControl = input.parentElement;
       formControl.className = "form-control error";
-      const small = formControl.querySelector("small");
-      small.innerText = message;
+      this.errorMessage = message;
     },
+
     showSuccess(input) {
       const formControl = input.parentElement;
       formControl.className = "form-control success";
+      this.errorMessage = message;
     },
-    // checkEmail(input) {
-    //   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    //   if (re.test(input.value.trim())) {
-    //     this.showSuccess(input);
-    //   } else {
-    //     this.showError(input, "Email格式不正确");
-    //   }
-    // },
-    checkRequired(inputArr) {
-      inputArr.forEach(function(input) {
-        if (input.value.trim() === "") {
-          this.showError(input, `${this.getFieldName(input)} 不能为空`);
-        } else {
-          this.showSuccess(input);
-        }
-      });
-    },
-    checkLength(input, min, max) {
-      if (input.value.length < min) {
-        this.showError(input, `${this.getFieldName(input)} 至少需要 ${min} 个字符`);
-      } else if (input.value.length > max) {
-        this.showError(input, `${this.getFieldName(input)} 不超过 ${max} 个字符`);
-      } else {
-        this.showSuccess(input);
-      }
-    },
-    checkPasswordsMatch(input1, input2) {
-      if (input1.value !== input2.value) {
-        this.showError(input2, "密码不匹配");
-      }
-    },
-    getFieldName(input) {
-      return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-    },
-  },
-  mounted() {
-    const form = document.getElementById("form");
-    const username = document.getElementById("username");
-    const email = document.getElementById("email");
-    const password = document.getElementById("password");
-    const password2 = document.getElementById("password2");
-
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      this.checkRequired([username, email, password, password2]);
-      this.checkLength(username, 3, 15);
-      this.checkLength(password, 6, 25);
-      //this.checkEmail(email), 
-      this.checkPasswordsMatch(password, password2);
-    });
+    checkRequired(inputArr) {},
+    submitForm() {},
   },
 };
 </script>
 
-<style lang=""></style>
+<style lang="scss" scoped>
+:root {
+  --success-color: #2ecc71;
+  --error-color: #e74c3c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  width: 50rem;
+}
+
+h2 {
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.form {
+  padding: 30px 40px;
+}
+
+.form-control {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+
+  label {
+    color: black;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+
+    &:focus {
+      outline: 0;
+      border-color: #777;
+    }
+  }
+
+  .success input {
+    border-color: var(--success-color);
+  }
+
+  .error input {
+    border-color: var(--error-color);
+  }
+
+  small {
+    color: var(--error-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+  }
+
+  .error small {
+    visibility: visible;
+  }
+}
+
+.form button {
+  cursor: pointer;
+  background-color: #3498db;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-size: 1rem;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+</style>
