@@ -13,7 +13,7 @@
       <ul>
         <li><router-link to="/auth">登入</router-link></li>
         <li v-if="isLoggedIn"><a>登出</a></li>
-        <li v-else><a href="#">注册</a></li>
+        <li v-else><router-link to="/register" href="#">注册</router-link></li>
       </ul>
     </nav>
 
@@ -48,7 +48,9 @@ export default {
       document.querySelector(".sideBar_Links").classList.add("sideBar--Open");
     },
     closeSideBar() {
-      document.querySelector(".sideBar_Links").classList.remove("sideBar--Open");
+      document
+        .querySelector(".sideBar_Links")
+        .classList.remove("sideBar--Open");
     },
   },
 };
@@ -154,5 +156,4 @@ nav {
 .sideBar .sideBar--Open {
   transform: translateX(0);
 }
-
 </style>

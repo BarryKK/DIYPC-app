@@ -18,7 +18,7 @@
       ></cpu-item>
     </ul>
   </base-card>
-   <el-backtop></el-backtop>
+  <el-backtop></el-backtop>
 </template>
 
 <script>
@@ -51,7 +51,6 @@ export default {
     cpus() {
       return this.$store.getters["cpus/cpus"];
     },
-   
   },
   methods: {
     updateSearch(val) {

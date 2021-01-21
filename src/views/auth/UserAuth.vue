@@ -1,21 +1,20 @@
 <template >
-  <div class="container">
-    <form @submit.prevent="submitForm">
+  <base-card>
+    <div class="container">
+      <form @submit.prevent="submitForm" id="form" class="form">
+        <h2>登录</h2>
         <div class="form-control">
           <label for="email">E-Mail</label>
-          <el-input v-model="email" placeholder="请输入登录邮箱"></el-input>
+          <input placeholder="请输入密码" type="text" id="email" />
         </div>
         <div class="form-control">
           <label for="密码">密码</label>
-          <el-input
-            placeholder="请输入密码"
-            v-model="password"
-            show-password
-          ></el-input>
+          <input placeholder="请输入密码" type="password" id="password" />
         </div>
-      <el-button type="primary" native-type="submit">登入</el-button>
-    </form>
-  </div>
+        <button type="submit">登入</button>
+      </form>
+    </div>
+  </base-card>
 </template>
 
 <script scoped>
@@ -30,26 +29,62 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container{
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.26);
-  padding: 1rem;
-  margin: 2rem auto;
-  max-width:40rem;
-}    
+* {
+  box-sizing: border-box;
+}
 
-form {
-  margin: 1rem;
-  padding: 1rem;
+.container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  width: 50rem;
+}
 
-  .form-control {
-    margin: 0.5rem 0;
-  }
+h2 {
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.form {
+  padding: 30px 40px;
+}
+
+.form-control {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
 
   label {
-    margin-bottom: 0.5rem;
+    color: black;
     display: block;
-    font-weight: bold;
+    margin-bottom: 5px;
   }
+
+  input {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+
+    &:focus {
+      outline: 0;
+      border-color: #777;
+    }
+  }
+}
+
+.form button {
+  cursor: pointer;
+  background-color: #3498db;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-size: 1rem;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
 }
 </style>
