@@ -2,16 +2,14 @@
   <div class="nav-container">
     <nav class="nav">
       <div>
-        <span id="btnSideBar" class="header_Button" @click="openSideBar()">
-          <img
-            src="../../assets/icons/icons8-menu-144.png"
-            style="width: 40px; height: 40px"
-          />
-        </span>
+        <fa-icon :icon="['fas', 'bars']" size="2x" color="white" @click="openSideBar()" class="sideBarBtn"/>
         <h1><router-link to="/home">DIY 装机</router-link></h1>
       </div>
       <ul>
-        <li><router-link to="/auth">登入</router-link></li>
+        <li>
+          <fa-icon :icon="['fas', 'sign-in-alt']" color="white" />
+          <router-link to="/auth">登入</router-link>
+        </li>
         <li v-if="isLoggedIn"><a>登出</a></li>
         <li v-else><router-link to="/register" href="#">注册</router-link></li>
       </ul>
@@ -71,8 +69,12 @@ nav {
   justify-content: space-between;
   align-items: center;
 
-  span:hover {
-    background: #37c2f0;
+  .sideBarBtn{
+    margin-right: 10px;
+    &:hover {
+      cursor: pointer;
+      color: #37c2f0;
+    }
   }
 
   //添加字体

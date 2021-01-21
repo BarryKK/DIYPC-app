@@ -16,20 +16,12 @@
         <div class="form-control">
           <label for="password">密码</label>
           <input type="password" id="password" placeholder="请输入密码" />
-<<<<<<< HEAD
-          <small>Error message</small>
-=======
           <small>{{errorMessage}}</small>
->>>>>>> 8410482d62bf874dace97885642f234499dd35b4
         </div>
         <div class="form-control">
           <label for="password2">确认密码</label>
           <input type="password" id="password2" placeholder="请再次输入密码" />
-<<<<<<< HEAD
-          <small>Error message</small>
-=======
           <small>{{errorMessage}}</small>
->>>>>>> 8410482d62bf874dace97885642f234499dd35b4
         </div>
         <button type="submit">提交</button>
       </form>
@@ -38,36 +30,31 @@
 </template>
 <script>
 export default {
-<<<<<<< HEAD
-  methods: {},
-  mounted() {},
-=======
-  data() {
-    return {
-      username: "",
-      email: "",
-      password: "",
-      password2: "",
-      errorMessage: "",
-      formIsValid: true,
-    };
-  },
-  methods: {
-    showError(input, message) {
-      const formControl = input.parentElement;
-      formControl.className = "form-control error";
-      this.errorMessage = message;
-    },
+  // data() {
+  //   return {
+  //     username: "",
+  //     email: "",
+  //     password: "",
+  //     password2: "",
+  //     errorMessage: "",
+  //     formIsValid: true,
+  //   };
+  // },
+  // methods: {
+  //   showError(input, message) {
+  //     const formControl = input.parentElement;
+  //     formControl.className = "form-control error";
+  //     this.errorMessage = message;
+  //   },
 
-    showSuccess(input) {
-      const formControl = input.parentElement;
-      formControl.className = "form-control success";
-      this.errorMessage = message;
-    },
-    checkRequired(inputArr) {},
-    submitForm() {},
-  },
->>>>>>> 8410482d62bf874dace97885642f234499dd35b4
+  //   showSuccess(input) {
+  //     const formControl = input.parentElement;
+  //     formControl.className = "form-control success";
+  //     this.errorMessage = message;
+  //   },
+  //   checkRequired(inputArr) {},
+  //   submitForm() {},
+  // },
 };
 </script>
 
