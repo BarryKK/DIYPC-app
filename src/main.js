@@ -1,5 +1,11 @@
 import { createApp } from "vue";
-import { ElButton, ElInput, ElBacktop, ElInfiniteScroll } from "element-plus";
+import {
+  ElButton,
+  ElInput,
+  ElBacktop,
+  ElInfiniteScroll,
+  ElDialog,
+} from "element-plus";
 import "element-plus/lib/theme-chalk/index.css";
 
 import App from "./App.vue";
@@ -20,6 +26,7 @@ app.component(ElButton.name, ElButton);
 app.component(ElInput.name, ElInput);
 app.component(ElBacktop.name, ElBacktop);
 app.component(ElInfiniteScroll.name, ElInfiniteScroll);
+app.component(ElDialog.name, ElDialog);
 
 app.component("base-card", BaseCard);
 
