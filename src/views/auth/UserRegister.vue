@@ -1,60 +1,73 @@
 <template lang="">
   <base-card>
     <div class="container">
-      <form @submit.prevent="submitForm" id="form" class="form">
+      <Form @submit="onSubmit" id="form" class="form">
         <h2>注册</h2>
         <div class="form-control">
           <label for="username">用户名</label>
-          <input type="text" id="username" placeholder="请输入用户名" v-model.trim="email"/>
-          <small>{{errorMessage}}</small>
+          <field type="username" name="username" placeholder="请输入用户名" :rules="validateUsername"/>
+          <ErrorMessage name="username" style="color:red"/>
         </div>
         <div class="form-control">
           <label for="email">Email</label>
-          <input type="text" id="email" placeholder="请输入E-Mail" />
-          <small>{{errorMessage}}</small>
+          <field type="email" name="email" placeholder="请输入邮箱" :rules="validateEmail"/>
+          <ErrorMessage name="email" style="color:red"/>
         </div>
         <div class="form-control">
           <label for="password">密码</label>
-          <input type="password" id="password" placeholder="请输入密码" />
-          <small>{{errorMessage}}</small>
-        </div>
-        <div class="form-control">
+          <field type="password" name="password" placeholder="请输入密码" :rules="validatePassword"/>
+          <ErrorMessage name="password" style="color:red"/>
+        </div> 
+        <!-- <div class="form-control">
           <label for="password2">确认密码</label>
-          <input type="password" id="password2" placeholder="请再次输入密码" />
+          <input type="password" id="password2" placeholder="请再次输入密码" v-model.trim="password2"/>
           <small>{{errorMessage}}</small>
-        </div>
+        </div> -->
         <button type="submit">提交</button>
-      </form>
+      </Form>
     </div>
   </base-card>
 </template>
 <script>
-export default {
-  // data() {
-  //   return {
-  //     username: "",
-  //     email: "",
-  //     password: "",
-  //     password2: "",
-  //     errorMessage: "",
-  //     formIsValid: true,
-  //   };
-  // },
-  // methods: {
-  //   showError(input, message) {
-  //     const formControl = input.parentElement;
-  //     formControl.className = "form-control error";
-  //     this.errorMessage = message;
-  //   },
+import {Form, Field, ErrorMessage} from 'vee-validate'
 
-  //   showSuccess(input) {
-  //     const formControl = input.parentElement;
-  //     formControl.className = "form-control success";
-  //     this.errorMessage = message;
-  //   },
-  //   checkRequired(inputArr) {},
-  //   submitForm() {},
-  // },
+export default {
+  components: {
+   Form,
+   Field,
+   ErrorMessage
+  },
+  methods: {
+    onSubmit(){
+      alert('Submitted')
+    },
+    validateEmail(value){
+      if(!value){
+        return '邮箱不能为空'
+      }
+
+      if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+        return '邮箱的格式不正确';
+      }
+
+      return true;
+    },
+    validateUsername(value){
+      if(!value){
+        return '用户名不能为空'
+      }
+
+      return true;
+    },
+    validatePassword(value){
+      if(!value){
+        return '密码不能为空'
+      }
+
+      return true;
+    }
+
+  },
 };
 </script>
 
@@ -67,6 +80,7 @@ export default {
 * {
   box-sizing: border-box;
 }
+
 
 .container {
   background-color: #fff;
@@ -107,14 +121,6 @@ h2 {
       outline: 0;
       border-color: #777;
     }
-  }
-
-  .success input {
-    border-color: var(--success-color);
-  }
-
-  .error input {
-    border-color: var(--error-color);
   }
 
   small {

@@ -13,13 +13,19 @@ import {
 import "element-plus/lib/theme-chalk/index.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faBars, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faSignInAlt,
+  faSignOutAlt,
+  faUser,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 
 import BaseCard from "./components/ui/BaseCard.vue";
 
 const app = createApp(App);
 
-library.add(faBars, faSignInAlt);
+library.add(faBars, faSignInAlt, faSignOutAlt, faUser, faUsers);
 
 app.config.productionTip = false;
 

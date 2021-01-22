@@ -2,16 +2,23 @@
   <div class="nav-container">
     <nav class="nav">
       <div>
-        <fa-icon :icon="['fas', 'bars']" size="2x" color="white" @click="openSideBar()" class="sideBarBtn"/>
+        <fa-icon
+          :icon="['fas', 'bars']"
+          size="2x"
+          color="white"
+          @click="openSideBar()"
+          class="sideBarBtn"
+        />
         <h1><router-link to="/home">DIY 装机</router-link></h1>
       </div>
       <ul>
         <li>
-          <fa-icon :icon="['fas', 'sign-in-alt']" color="white" />
+          <fa-icon :icon="['fas', 'sign-in-alt']" color="white"/>
           <router-link to="/auth">登入</router-link>
         </li>
-        <li v-if="isLoggedIn"><a>登出</a></li>
-        <li v-else><router-link to="/register" href="#">注册</router-link></li>
+        <li><fa-icon :icon="['fas', 'sign-out-alt']" color="white"/><a>登出</a></li>
+        <li><fa-icon :icon="['fas', 'users']" color="white" /><router-link to="/register" href="#">注册</router-link></li>
+        <li><fa-icon :icon="['fas', 'user']" color="white" /><a>个人中心</a></li>
       </ul>
     </nav>
 
@@ -69,7 +76,7 @@ nav {
   justify-content: space-between;
   align-items: center;
 
-  .sideBarBtn{
+  .sideBarBtn {
     margin-right: 10px;
     &:hover {
       cursor: pointer;
@@ -77,7 +84,6 @@ nav {
     }
   }
 
-  //添加字体
   h1 {
     a {
       color: white;
@@ -99,20 +105,19 @@ nav {
     list-style: none;
     li {
       padding: 0 1rem;
-      color: white;
+      
 
       a {
         color: white;
-        padding: 0.75rem 1.5rem;
+        padding: 0.75rem 0.5rem;
         text-decoration: none;
       }
 
-      a:active,
       a:hover,
       a.router-link-active {
+        color: #37c2f0;
         cursor: pointer;
         border: none;
-        background: #37c2f0;
         transition: all 0.5s;
       }
     }
