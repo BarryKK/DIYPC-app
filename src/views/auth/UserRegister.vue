@@ -1,73 +1,76 @@
 <template lang="">
   <base-card>
     <div class="container">
-      <Form @submit="onSubmit" id="form" class="form">
+      <Form
+        @submit="onSubmit"
+        id="form"
+        class="form"
+        :validation-schema="schema"
+      >
         <h2>注册</h2>
         <div class="form-control">
           <label for="username">用户名</label>
-          <field type="username" name="username" placeholder="请输入用户名" :rules="validateUsername"/>
-          <ErrorMessage name="username" style="color:red"/>
+          <field type="username" name="username" placeholder="请输入用户名"/>
+          <ErrorMessage name="username" style="color:red" />
         </div>
         <div class="form-control">
           <label for="email">Email</label>
-          <field type="email" name="email" placeholder="请输入邮箱" :rules="validateEmail"/>
-          <ErrorMessage name="email" style="color:red"/>
+          <field type="email" name="email" placeholder="请输入邮箱"/>
+          <ErrorMessage name="email" style="color:red" />
         </div>
         <div class="form-control">
           <label for="password">密码</label>
-          <field type="password" name="password" placeholder="请输入密码" :rules="validatePassword"/>
-          <ErrorMessage name="password" style="color:red"/>
-        </div> 
-        <!-- <div class="form-control">
+          <field type="password" name="password" placeholder="请输入密码" />
+          <ErrorMessage name="password" style="color:red" />
+        </div>
+        <div class="form-control">
           <label for="password2">确认密码</label>
-          <input type="password" id="password2" placeholder="请再次输入密码" v-model.trim="password2"/>
-          <small>{{errorMessage}}</small>
-        </div> -->
+          <field
+            type="password"
+            name="password2"
+            placeholder="请再次输入密码"
+          
+          />
+          <ErrorMessage name="password2" style="color:red"></ErrorMessage>
+        </div>
         <button type="submit">提交</button>
+
+      
+
       </Form>
     </div>
   </base-card>
 </template>
+
 <script>
-import {Form, Field, ErrorMessage} from 'vee-validate'
+import { markRaw } from "vue";
+import { Form, Field, ErrorMessage} from "vee-validate";
+import * as Yup from "yup";
 
 export default {
   components: {
-   Form,
-   Field,
-   ErrorMessage
+    Form,
+    Field,
+    ErrorMessage,
+  },
+  data() {
+    const schema = markRaw(
+      Yup.object().shape({
+        username: Yup.string().required("用户名不能为空"),
+        email: Yup.string().email("邮箱格式不正确").required("Email不能为空"),
+        password: Yup.string().min(8, "密码不得少于8个字符").required("密码不能为空"),
+        password2: Yup.string().required("密码不能为空").oneOf([Yup.ref("password")], "密码不匹配"),
+      })
+    );
+    return {
+      schema
+    };
   },
   methods: {
-    onSubmit(){
-      alert('Submitted')
+    onSubmit() {
+      alert("success");
     },
-    validateEmail(value){
-      if(!value){
-        return '邮箱不能为空'
-      }
-
-      if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-        return '邮箱的格式不正确';
-      }
-
-      return true;
-    },
-    validateUsername(value){
-      if(!value){
-        return '用户名不能为空'
-      }
-
-      return true;
-    },
-    validatePassword(value){
-      if(!value){
-        return '密码不能为空'
-      }
-
-      return true;
-    }
-
-  },
+  }
 };
 </script>
 
@@ -80,7 +83,6 @@ export default {
 * {
   box-sizing: border-box;
 }
-
 
 .container {
   background-color: #fff;
@@ -111,28 +113,17 @@ h2 {
 
   input {
     border: 2px solid #f0f0f0;
-    border-radius: 4px;
-    display: block;
+    border-radius: 5px;
     width: 100%;
-    padding: 10px;
+    padding: 15px 10px;
+    outline: none;
     font-size: 1rem;
+    transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out,
+      background-color 0.3s ease-in-out;
 
     &:focus {
-      outline: 0;
       border-color: #777;
     }
-  }
-
-  small {
-    color: var(--error-color);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    visibility: hidden;
-  }
-
-  .error small {
-    visibility: visible;
   }
 }
 
