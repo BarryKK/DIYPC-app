@@ -6,6 +6,8 @@ import UserRegister from "../views/auth/UserRegister.vue";
 import CpuList from "../views/cpu/CpuList";
 import GraphicCardList from "../views/graphiccard/GraCardList";
 
+import test from "../components/layout/Background";
+
 const routes = [
   {
     path: "/",
@@ -34,6 +36,10 @@ const routes = [
   {
     path: "/about",
     component: About,
+  },
+  {
+    path: "/test",
+    component: test,
   },
 ];
 

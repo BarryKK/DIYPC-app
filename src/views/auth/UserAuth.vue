@@ -1,20 +1,19 @@
-<template >
-  <base-card>
-    <div class="container">
-      <form @submit.prevent="submitForm" id="form" class="form">
-        <h2>登录</h2>
-        <div class="form-control">
-          <label for="email">E-Mail</label>
-          <input placeholder="请输入密码" type="text" id="email" />
-        </div>
-        <div class="form-control">
-          <label for="密码">密码</label>
-          <input placeholder="请输入密码" type="password" id="password" />
-        </div>
-        <button type="submit">登入</button>
-      </form>
-    </div>
-  </base-card>
+<template>
+  <background></background>
+  <div class="container">
+    <form @submit.prevent="submitForm" id="form" class="form">
+      <h2>登录</h2>
+      <div class="form-control">
+        <label for="email">E-Mail</label>
+        <input placeholder="请输入密码" type="text" id="email" />
+      </div>
+      <div class="form-control">
+        <label for="密码">密码</label>
+        <input placeholder="请输入密码" type="password" id="password" />
+      </div>
+      <button type="submit">登入</button>
+    </form>
+  </div>
 </template>
 
 <script scoped>
@@ -34,6 +33,10 @@ export default {
 }
 
 .container {
+  position: absolute;
+  top: 10rem;
+  left: 50%;
+  margin-left: -20rem;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);

@@ -13,13 +13,24 @@ import {
   faSignOutAlt,
   faUser,
   faUsers,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import { faCircle } from "@fortawesome/free-regular-svg-icons";
 
 import BaseCard from "./components/ui/BaseCard.vue";
+import Background from "./components/layout/Background.vue";
 
 const app = createApp(App);
 
-library.add(faBars, faSignInAlt, faSignOutAlt, faUser, faUsers);
+library.add(
+  faBars,
+  faSignInAlt,
+  faSignOutAlt,
+  faUser,
+  faUsers,
+  faTimes,
+  faCircle
+);
 
 app.config.productionTip = false;
 
@@ -31,5 +42,6 @@ app.component(ElDialog.name, ElDialog);
 app.component(ElButton.name, ElButton);
 app.component("fa-icon", FontAwesomeIcon);
 app.component("base-card", BaseCard);
+app.component("background", Background);
 
 app.mount("#app");
